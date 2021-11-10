@@ -27,7 +27,7 @@ Note: This is only available after running `yarn link` above.
 The script takes two arguments, `input` and `output`
 
 `input` should be a list of csv files to be provided to your program. This can be a glob
-`output` should be the path where a JSON file of your report should be written.
+`output` should be the path to where a JSON file of your report should be written.
 
 ### To run an analysis on a set of files
 
