@@ -3,4 +3,5 @@ node_modules
 npm-debug.log
 .DS_Store
 __MACOSX/
-lib
+libnode_modules
+node_modules
