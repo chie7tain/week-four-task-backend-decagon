@@ -5,8 +5,8 @@
  * @param {string} outputPath The path to output the analysis
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 // create interface for template
 interface Template {
@@ -33,7 +33,7 @@ const readFiles = (data: string) => {
     strArr.shift();
   }
   template.totalEmailsParsed = strArr.length;
-  console.log(strArr);
+
   // find well formed emails using regex
   const emails = strArr.filter((str) => {
     return str.match(/^[a-zA-Z+0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/);
@@ -52,12 +52,12 @@ const readFiles = (data: string) => {
     }
   });
   template.totalValidEmails = emails.length;
-  console.log(template);
+
 };
 
 function analyseFiles(inputPaths: string[], outputPath: string) {
   inputPaths.forEach((inputPath) => {
-    fs.readFile(inputPath, 'utf8', (err: string, data: string) => {
+    fs.readFile(inputPath, 'utf8', (err, data: string) => {
       if (err) {
         console.log(err);
       } else {
