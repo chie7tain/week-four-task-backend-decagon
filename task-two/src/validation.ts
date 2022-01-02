@@ -34,17 +34,14 @@ const cleanEmails = (data: string) => {
 
 function validateEmailAddresses(inputPath: string[], outputFile: string) {
   inputPath.forEach((inputPath) => {
-
     const readStream = fs.createReadStream(inputPath, { encoding: 'utf8' });
     const writeStream = fs.createWriteStream(outputFile, { encoding: 'utf8' });
-    // readStream.pipe(writeStream);
-
     readStream.on('data', async (chunk: string) => {
       const wellformedEmails = cleanEmails(chunk);
 
       wellformedEmails.map((email) => {
         const domain = email.split('@')[1];
-        dns.resolve(domain, 'MX', function (err, addresses){
+        dns.resolve(domain, 'MX', function (err, addresses) {
           if (err) {
             console.log('No MX record exists, so email is invalid.');
           } else if (addresses && addresses.length > 0) {
@@ -52,7 +49,7 @@ function validateEmailAddresses(inputPath: string[], outputFile: string) {
           }
         });
       });
-    })
+    });
     writeStream.on('end', () => {
       console.log('The end');
     });

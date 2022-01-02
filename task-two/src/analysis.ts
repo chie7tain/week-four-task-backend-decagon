@@ -52,7 +52,6 @@ const readFiles = (data: string) => {
     }
   });
   template.totalValidEmails = emails.length;
-
 };
 
 function analyseFiles(inputPaths: string[], outputPath: string) {
